@@ -18,9 +18,9 @@ export const get_user = async (req, res,next) => {
         //si quieres sacar el parametro del enpoint usa req.params
         //res.send("mostrando usuario");
 
-        let [rows] = await pool.query("select * from Usuarios where u.id = ?", [req.params.id]);
-        //if (rows.length <= 0) return res.status(404).json({ "data": "data not  found" })
-          if (rows.length === 0) return next(); // → Va al app.use((req,res) => res.send(HTML 404))
+        let [rows] = await pool.query("select * from Usuarios where id = ?", [req.params.id]);
+        if (rows.length <= 0) return res.status(404).json({ "data": "data not  found" })
+          //if (rows.length <= 0) return next(); // → Va al app.use((req,res) => res.send(HTML 404))
     
 
             res.send(rows[0])
