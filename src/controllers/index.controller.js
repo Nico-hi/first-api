@@ -6,7 +6,7 @@ export const index_controller = async (req,res)=>{
     let [result] = await pool.query('select \'it works\' as result')
     res.json(result)
     }catch(error){
-        return res.status(500).json({"message":"something goes wrong"})
+        return res.status(500).json({ "message": "DB Error", "details": error.message})
     }
 
 }
