@@ -1,13 +1,11 @@
 import {pool} from './../db.js';
 
 export const get_pedidos = async (req,res)=>{
-
     try{
         let [rows] = await pool.query('select * from Pedidos');
         res.send({rows})
     }catch(error){
         console.log("algo esta mal");
-        
         return res.status(500).json({"message":"something goes wrong..."})
     }
 
